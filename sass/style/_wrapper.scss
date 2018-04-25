@@ -1,0 +1,164 @@
+
+body {
+	@media only screen and (min-width:$content) {
+		width: $content;
+	}
+
+	@media only screen and (max-width:$content) {
+		width: auto;
+		margin: 0 5px 0 5px;
+	}
+
+	position: relative;
+	margin: auto;
+
+	background: $bg;
+	color: $fg;
+
+	font-family: 'Lato', sans-serif;
+	font-size: 16px
+}
+
+section {
+	margin-top: 20px;
+
+	&:first-child {
+		margin: 0;
+	}
+
+	.section-title {
+		padding: 15px 0;
+		font-size: 18px;
+	}
+}
+
+h1 {
+	margin: 20px 0;
+	font-size: 26px;
+	font-family: 'Roboto Mono', monospace;
+	.user {
+		color: $teal;
+	}
+	.tilde {
+		color: $green;
+	}
+}
+
+h2, h3 {
+	color: $active;
+	svg {
+		display: inline-block;			
+		min-width: 35px;
+		text-align: center;
+	}
+}
+
+a, a:link, a:active, a:visited {
+	text-decoration: none;
+	color: $fg;
+	outline: none;
+	
+	svg {
+		padding: 0 10px 0 0;
+	}
+
+	&.active {
+		color: $active;
+		// background: $bg;
+	}
+}
+
+a:hover {
+	color: white;
+
+	&.active {
+		color: white;
+		// background: $bg;
+	}
+}
+
+.badge {
+	display: inline-block;
+	min-width: 40px;
+	background: $grey2;
+	color: white;
+
+	font-family: 'Audiowide', cursive;
+	text-align: center;
+	font-size: 9px;
+	padding: 6px 4px;
+
+	border-radius: 50px;
+}
+
+.return {
+	display: inline-block;
+	margin: 10px 0;
+	&:link, &:active, &:visited {
+		color: $grey3;
+	}
+
+	&:hover {
+		color: white;
+	}
+}
+
+header, footer {
+	margin: 20px 0;
+	h1 {
+		margin: 0;
+		// float: right;
+		display: inline-block;
+	}
+
+	span {
+		margin: 0 5px;
+	}
+
+	.return {
+		margin: 0;
+	}
+}
+
+.info {
+		// margin: 10px 0;
+		margin: 5px 0;
+		border: 2px solid $active;
+		padding: 15px;
+		background: black;
+
+		h2 {
+			padding: 10px 0;
+			color: $playing;
+			font-family: 'Unica One', cursive;
+		}
+
+		p {
+			color: $grey3;
+			// font-style: italic;
+			font-size: 12px;
+			margin: 2px 0 0 5px;
+		}
+}
+
+.track-lst {
+		width: 100%;
+		margin: 10px 0;
+
+		font-family: 'Unica One', cursive;
+		
+		tr {
+
+			td {
+				padding: 4px 0 2px 0;
+				// border-bottom: 1px dashed $grey2;
+
+				&:first-child {
+					text-align: right;
+					padding-right: 10px;
+					color: $grey2;
+				}
+
+			}
+		}
+}

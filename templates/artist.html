@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ title }}</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<header>
+			<a class="return" href="{{ url_for('index') }}"><span class="fas fa-angle-left"></span>Return</a>
+			<span>/</span>
+			<a class="return" href="{{ url_for('readmpdlist', page=1, sort='timestamp', asc=0)}}">Track list</a>
+			<span>/</span>
+			<h1>Artist</h1>
+		</header>
+
+		<section id="artist">
+
+			<div class="info">
+				<h2>{{ artist }}</h2>
+				<p>Number of tracks: <span>{{ played }}</span></p>
+				<p>Total number of played songs: <span>{{ total }}</span></p>
+			</div>
+
+			<table class="track-lst">
+				<th><a class="{% if sort == 'id' %} active {% endif %}" href="{{ url_for('getArtist', artist=artist, sort='id', asc=rev) }}">id</a></th>
+				<th><a class="{% if sort == 'title' %} active {% endif %}" href="{{ url_for('getArtist', artist=artist, sort='title', asc=rev) }}">title</a></th>
+				<th><a class="{% if sort == 'played' %} active {% endif %}" href="{{ url_for('getArtist', artist=artist, sort='played', asc=rev) }}">played</a></th>
+				<th><a class="{% if sort == 'last_played' %} active {% endif %}" href="{{ url_for('getArtist', artist=artist, sort='last_played', asc=rev) }}">Last played</a></th>
+				{% for item in songs %}
+				<tr>
+					<td>{{ item['id'] }}</td>
+					<td><a href="{{ url_for('getTimestamps', id=item['id']) }}">{{ item['title'] }}</a></td>
+					<td><span class="badge">{{ item['played'] }}</span></td>
+					<td>{{ item['last_played'] }}</td>
+				</tr>
+				{%  endfor %}
+			</table>
+		</section>
+		
+		<footer>
+			<a class="return" href="{{ url_for('index') }}"><span class="fas fa-angle-left"></span>Return</a>
+			<span>/</span>
+			<a class="return" href="{{ url_for('readmpdlist', page=1, sort='timestamp', asc=0)}}">Track list</a>
+		</footer>
+
+	</body>
+</html>

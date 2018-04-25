@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ title }}</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<h1><span class="user">{{ user }}</span>:<span class="tilde">~</span> echo Hello World!</h1>
+		<section id="playing">
+			<div class="current">
+				<h2><!-- <span class="fas fa-music"></span> -->Currently playing</h2>
+				{% if title %}
+				<p>{{ songtitle }}</p>
+				{% else %}
+				<p>Nothing</p>
+				{% endif %}
+			</div>
+			<div class="mpd-stats">
+				<h2>MPD</h2>
+				{% for stat in stats %}
+				<p>{{ stat }}</p>
+				{% endfor %}
+			</div>
+		</section>
+		<section id="bookmarks">
+			<h2 class="section-title"><!-- <span class="fas fa-bookmark"></span> -->Bookmarks</h2>
+			<div class="flex-container">
+				{% for group in favourites %}
+				<div class="{{ group }} group">
+					<h3>{{ group }}</h3>
+					<ul>
+						{% for item in favourites[group] %}
+						<li><a href="{{ item['url'] }}"><span class="{{ item['icon'] }}"></span>{{ item['name'] }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endfor %}
+			</div>
+		</section>
+		<section id="toplist">
+			<h2 class="section-title"><!-- <span class="fas fa-trophy"></span> -->Top tracks</h2>
+			<table>
+				{% for item in toplist %}
+				{% if item['place'] == 1 or toplist[item['place'] - 1]['played'] == toplist[0]['played']%}
+				<tr class="top">
+				{% else %}
+				<tr>
+				{% endif %}
+					<td>{{ item['place'] }}</td>
+					<td><a href="{{ url_for('getArtist', artist=item['artist'], sort='played', asc=0) }}">{{ item['artist'] }}</a> - <a href="{{ url_for('getTimestamps', id=item['id']) }}">{{ item['title'] }}</a></td>
+					<td><span class="badge">{{ item['played'] }}</span></td>
+				</tr>
+				{%  endfor %}
+			</table>
+			<a class="return full-list" href="{{ url_for('readmpdlist', page=1, sort='timestamp', asc=0) }}"><span class="fas fa-clipboard-list"></span>Show all</a>
+		</section>	
+	</body>
+</html> 

@@ -1,0 +1,63 @@
+#bookmarks {
+	.flex-container {
+		display: flex;
+		justify-content: space-between;
+		@media only screen and (max-width:$content) {
+			display: block;
+			.group {
+				margin: 5px 0 0 0;
+			}
+		}
+
+		.group:first-child {
+			margin-left: 0;
+		}
+
+		.group:last-child {
+			margin-right: 0;
+		}
+	}
+
+	.group {
+		margin: 5px;
+		padding: 10px;
+		min-width: 150px;
+
+		background: $grey2;
+		border-left: 2px solid $active;
+
+		h3 {
+			margin-bottom: 10px;
+		}
+	}
+
+	ul {
+		li {
+			padding: 4px;
+
+			svg {
+				display: inline-block;
+				min-width: 35px;
+				text-align: center;
+				padding: 0;
+			}
+
+			&:hover {
+				background: $grey1;
+				border-radius: 5px;
+				a {
+					color: white;
+				}
+
+				svg {
+					color: white;
+				}
+			}
+
+			a {
+				display: inline-block;
+				width: 100%;
+			}
+		}
+	}
+}

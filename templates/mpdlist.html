@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ title }}</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<header>
+			<a class="return" href="{{ url_for('index') }}"><span class="fas fa-angle-left"></span>Return</a>
+			<span>/</span>
+			<h1>Track list</h1>
+		</header>
+		
+
+		<section id="mpdlist">
+			<p>Songs played: <span>{{ songsplayed }}</span></p>
+
+			<table class="track-lst">
+				<tr>
+					<th><a class="{% if sort == 'timestamp' %} active {% endif %}" href="{{ url_for('readmpdlist', page=page, sort='timestamp', asc=rev) }}">timestamp</a></th>
+					<th>
+						<a class="{% if sort == 'artist' %} active {% endif %}" href="{{ url_for('readmpdlist', page=page, sort='artist', asc=rev) }}">artist</a>
+						/
+						<a class="{% if sort == 'title' %} active {% endif %}" href="{{ url_for('readmpdlist', page=page, sort='title', asc=rev) }}">title</a>
+					</th>
+					<th><a class="{% if sort == 'played' %} active {% endif %}" href="{{ url_for('readmpdlist', page=page, sort='played', asc=rev) }}">played</a></th>
+				</tr>
+				{% for item in mpdlist %}
+				{% if mpdlist.index(item) in range(page * items - items, page * items) %}
+				{% if sort == 'played' and not asc and item['played'] == mpdlist[0]['played'] %}
+				<tr class="top">
+				{% else %}
+				<tr>
+				{% endif %}
+					<td>{{ item['timestamp'] }}</td>
+					<td><a href="{{ url_for('getArtist', artist=item['artist'], sort='played', asc=0) }}">{{ item['artist'] }}</a> - <a href="{{ url_for('getTimestamps', id=item['id']) }}">{{ item['title'] }}</a></td>
+					<td><span class="badge">{{ item['played'] }}</span></td>
+				</tr>
+				{% endif %}
+				{% endfor %}
+			</table>
+			
+			<div class="pagination">
+				<ul class="flex-container">
+					{% if page != 1 %}
+					<li><a href="{{ url_for('readmpdlist', page=page - 1, sort=sort, asc=asc) }}"><span class="fas fa-angle-left"></span> Previous</a></li>
+					{% else %}
+					<li class="unactive"><span class="fas fa-angle-left"></span> Previous</li>
+					{% endif %}
+
+					<div>
+						{% if page not in range(1, 3) and page not in range(pages-1, pages + 1) %}
+						<li><a href="{{ url_for('readmpdlist', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+						<li>...</li>
+
+						{% for i in range(page - 3, page + 2) %}
+						<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('readmpdlist', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
+						{% endfor %}
+
+						<li>...</li>
+						<li><a href="{{ url_for('readmpdlist', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+						{% elif page in range(1, 3) %}
+						<li><a href="{{ url_for('readmpdlist', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+						<li>...</li>
+
+						{% for i in range(0, 5) %}
+						<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('readmpdlist', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
+						{% endfor %}
+
+						<li>...</li>
+						<li><a href="{{ url_for('readmpdlist', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+						{% else %}
+						<li><a href="{{ url_for('readmpdlist', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+						<li>...</li>
+
+						{% for i in range(pages-5, pages) %}
+						<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('readmpdlist', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
+						{% endfor %}
+
+						<li>...</li>
+						<li><a href="{{ url_for('readmpdlist', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+						{% endif %}
+					</div>
+
+					{% if page != pages %}
+					<li><a href="{{ url_for('readmpdlist', page=page + 1, sort=sort, asc=asc) }}">Next <span class="fas fa-angle-right"></span></a></li>
+					{% else %}
+					<li class="unactive">Next <span class="fas fa-angle-right"></span></li>
+					{% endif %}
+				</ul>
+			</div>
+		</section>
+	</body>
+</html>

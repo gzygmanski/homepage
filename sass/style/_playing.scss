@@ -1,0 +1,42 @@
+#playing {
+	margin: 5px 0;
+	border: 2px solid $active;
+	padding: 15px;
+
+	font-family: 'Unica One', cursive;
+
+	background: black;
+	h2 {
+		float: left;
+		margin-right: 10px;
+	}
+	p {
+		color: $playing;
+	}
+
+	.current {
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.mpd-stats {
+		display: block;
+		
+		h2 {
+			display: inline-block;
+			width: 100%;
+			margin: 2px 0 0 15px;
+			color: $green;
+		}
+
+		p {
+			font-family: 'Lato', sans-serif;
+			color: $grey3;
+			// font-style: italic;
+			font-size: 12px;
+			margin: 2px 0 0 15px;
+			
+		}
+	}
+}

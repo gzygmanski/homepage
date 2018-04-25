@@ -1,0 +1,380 @@
+@import url("https://fonts.googleapis.com/css?family=Audiowide");
+@import url("https://fonts.googleapis.com/css?family=Unica+One");
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  position: relative;
+  margin: auto;
+  background: #2e3436;
+  color: #bfbfbf;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px; }
+  @media only screen and (min-width: 736px) {
+    body {
+      width: 736px; } }
+  @media only screen and (max-width: 736px) {
+    body {
+      width: auto;
+      margin: 0 5px 0 5px; } }
+
+section {
+  margin-top: 20px; }
+  section:first-child {
+    margin: 0; }
+  section .section-title {
+    padding: 15px 0;
+    font-size: 18px; }
+
+h1 {
+  margin: 20px 0;
+  font-size: 26px;
+  font-family: 'Roboto Mono', monospace; }
+  h1 .user {
+    color: #68a6a8; }
+  h1 .tilde {
+    color: #6fa868; }
+
+h2, h3 {
+  color: #ffd573; }
+  h2 svg, h3 svg {
+    display: inline-block;
+    min-width: 35px;
+    text-align: center; }
+
+a, a:link, a:active, a:visited {
+  text-decoration: none;
+  color: #bfbfbf;
+  outline: none; }
+  a svg, a:link svg, a:active svg, a:visited svg {
+    padding: 0 10px 0 0; }
+  a.active, a:link.active, a:active.active, a:visited.active {
+    color: #ffd573; }
+
+a:hover {
+  color: white; }
+  a:hover.active {
+    color: white; }
+
+.badge {
+  display: inline-block;
+  min-width: 40px;
+  background: #3b4245;
+  color: white;
+  font-family: 'Audiowide', cursive;
+  text-align: center;
+  font-size: 9px;
+  padding: 6px 4px;
+  border-radius: 50px; }
+
+.return {
+  display: inline-block;
+  margin: 10px 0; }
+  .return:link, .return:active, .return:visited {
+    color: #999999; }
+  .return:hover {
+    color: white; }
+
+header, footer {
+  margin: 20px 0; }
+  header h1, footer h1 {
+    margin: 0;
+    display: inline-block; }
+  header span, footer span {
+    margin: 0 5px; }
+  header .return, footer .return {
+    margin: 0; }
+
+.info {
+  margin: 5px 0;
+  border: 2px solid #ffd573;
+  padding: 15px;
+  background: black; }
+  .info h2 {
+    padding: 10px 0;
+    color: #cfaccc;
+    font-family: 'Unica One', cursive; }
+  .info p {
+    color: #999999;
+    font-size: 12px;
+    margin: 2px 0 0 5px; }
+
+.track-lst {
+  width: 100%;
+  margin: 10px 0;
+  font-family: 'Unica One', cursive; }
+  .track-lst tr td {
+    padding: 4px 0 2px 0; }
+    .track-lst tr td:first-child {
+      text-align: right;
+      padding-right: 10px;
+      color: #3b4245; }
+
+#playing {
+  margin: 5px 0;
+  border: 2px solid #ffd573;
+  padding: 15px;
+  font-family: 'Unica One', cursive;
+  background: black; }
+  #playing h2 {
+    float: left;
+    margin-right: 10px; }
+  #playing p {
+    color: #cfaccc; }
+  #playing .current {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px; }
+  #playing .mpd-stats {
+    display: block; }
+    #playing .mpd-stats h2 {
+      display: inline-block;
+      width: 100%;
+      margin: 2px 0 0 15px;
+      color: #6fa868; }
+    #playing .mpd-stats p {
+      font-family: 'Lato', sans-serif;
+      color: #999999;
+      font-size: 12px;
+      margin: 2px 0 0 15px; }
+
+#bookmarks .flex-container {
+  display: flex;
+  justify-content: space-between; }
+  @media only screen and (max-width: 736px) {
+    #bookmarks .flex-container {
+      display: block; }
+      #bookmarks .flex-container .group {
+        margin: 5px 0 0 0; } }
+  #bookmarks .flex-container .group:first-child {
+    margin-left: 0; }
+  #bookmarks .flex-container .group:last-child {
+    margin-right: 0; }
+#bookmarks .group {
+  margin: 5px;
+  padding: 10px;
+  min-width: 150px;
+  background: #3b4245;
+  border-left: 2px solid #ffd573; }
+  #bookmarks .group h3 {
+    margin-bottom: 10px; }
+#bookmarks ul li {
+  padding: 4px; }
+  #bookmarks ul li svg {
+    display: inline-block;
+    min-width: 35px;
+    text-align: center;
+    padding: 0; }
+  #bookmarks ul li:hover {
+    background: #2e3436;
+    border-radius: 5px; }
+    #bookmarks ul li:hover a {
+      color: white; }
+    #bookmarks ul li:hover svg {
+      color: white; }
+  #bookmarks ul li a {
+    display: inline-block;
+    width: 100%; }
+
+#toplist table {
+  width: 100%;
+  margin-bottom: 10px;
+  font-family: 'Unica One', cursive; }
+  #toplist table .top td {
+    color: #ffd573 !important; }
+    #toplist table .top td a, #toplist table .top td a:link, #toplist table .top td a:active, #toplist table .top td a:visited {
+      color: #ffd573; }
+    #toplist table .top td .badge {
+      background: #ffd573;
+      color: #2e3436; }
+    #toplist table .top td a:hover {
+      color: white; }
+  #toplist table tr td {
+    padding: 8px 0 4px 0;
+    border-bottom: 1px dashed #3b4245; }
+    #toplist table tr td:first-child {
+      text-align: right;
+      padding-right: 10px;
+      color: #ffd573; }
+    #toplist table tr td:nth-child(2) {
+      color: #6fa868; }
+    #toplist table tr td a {
+      margin: 0; }
+#toplist a {
+  display: inline-block;
+  margin: 10px 0 20px 0; }
+#toplist .full-list {
+  margin: 5px 0 15px 15px; }
+  #toplist .full-list svg {
+    padding: 0 10px 0 0; }
+
+#mpdlist .top td {
+  color: #ffd573 !important; }
+  #mpdlist .top td a, #mpdlist .top td a:link, #mpdlist .top td a:active, #mpdlist .top td a:visited {
+    color: #ffd573; }
+  #mpdlist .top td .badge {
+    background: #ffd573;
+    color: #2e3436; }
+  #mpdlist .top td a:hover {
+    color: white; }
+#mpdlist .pagination {
+  display: inline-block;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  background: #3b4245;
+  color: #68a6a8;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px; }
+  #mpdlist .pagination ul {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px 5px 0 0; }
+    @media only screen and (min-width: 736px) {
+      #mpdlist .pagination ul {
+        width: 736px; } }
+    @media only screen and (max-width: 736px) {
+      #mpdlist .pagination ul {
+        width: 100%; }
+        #mpdlist .pagination ul div li {
+          display: none; } }
+    #mpdlist .pagination ul div {
+      display: inline-flex; }
+      #mpdlist .pagination ul div li {
+        padding: 5px; }
+        #mpdlist .pagination ul div li:first-child, #mpdlist .pagination ul div li:last-child {
+          width: initial; }
+    #mpdlist .pagination ul li {
+      padding: 5px 0; }
+      #mpdlist .pagination ul li a {
+        display: block;
+        width: 100%; }
+        #mpdlist .pagination ul li a svg {
+          padding: 0; }
+      #mpdlist .pagination ul li:first-child, #mpdlist .pagination ul li:last-child {
+        width: 100px;
+        text-align: center; }
+    #mpdlist .pagination ul .unactive {
+      color: #3b4245; }
+#mpdlist .track-lst {
+  margin-bottom: 45px; }
+  #mpdlist .track-lst tr th {
+    text-align: center;
+    background: #3b4245;
+    border-left: 3px solid #2e3436;
+    padding: 2px 0; }
+    #mpdlist .track-lst tr th a {
+      width: 100%; }
+    #mpdlist .track-lst tr th:first-child {
+      border-radius: 50px 0 0 50px;
+      border-left: none; }
+    #mpdlist .track-lst tr th:last-child {
+      border-radius: 0 50px 50px 0; }
+  #mpdlist .track-lst tr td {
+    border-bottom: 1px dashed #3b4245; }
+    #mpdlist .track-lst tr td:first-child {
+      width: 20%;
+      color: #999999; }
+    #mpdlist .track-lst tr td:nth-child(2) {
+      width: 70%;
+      color: #6fa868; }
+    #mpdlist .track-lst tr td:last-child {
+      width: 10%;
+      text-align: center; }
+
+#timestamps .info {
+  margin: 5px 0;
+  border: 2px solid #ffd573;
+  padding: 15px;
+  background: black; }
+  #timestamps .info h2 {
+    padding: 10px 0;
+    color: #cfaccc;
+    font-family: 'Unica One', cursive; }
+    #timestamps .info h2 a, #timestamps .info h2 a:link, #timestamps .info h2 a:active, #timestamps .info h2 a:visited {
+      color: #cfaccc; }
+    #timestamps .info h2 a:hover {
+      color: white; }
+  #timestamps .info p {
+    color: #999999;
+    font-style: italic;
+    font-size: 12px;
+    margin: 2px 0 0 5px; }
+#timestamps ol {
+  list-style-type: roman;
+  list-style-position: inside;
+  background: #3b4245;
+  padding: 15px;
+  border-left: 2px solid #ffd573; }
+  #timestamps ol li {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    margin-left: 10px;
+    color: #999999; }
+    #timestamps ol li:first-child {
+      color: #bfbfbf;
+      font-size: 16px;
+      margin-left: 0; }
+
+#artist .track-lst tr th {
+  text-align: center;
+  background: #3b4245;
+  border-left: 3px solid #2e3436;
+  padding: 2px 0; }
+  #artist .track-lst tr th a {
+    display: inline-block;
+    width: 100%; }
+  #artist .track-lst tr th:first-child {
+    border-radius: 50px 0 0 50px;
+    border-left: none; }
+  #artist .track-lst tr th:last-child {
+    border-radius: 0 50px 50px 0; }
+#artist .track-lst tr td {
+  border-bottom: 1px dashed #3b4245;
+  text-align: center; }
+  #artist .track-lst tr td:first-child {
+    color: #ffd573;
+    text-align: right; }
+  #artist .track-lst tr td:nth-child(2) {
+    text-align: left;
+    padding-left: 5px; }
+
+/*# sourceMappingURL=style.css.map */

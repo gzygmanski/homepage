@@ -1,0 +1,52 @@
+#timestamps {
+	.info {
+		// margin: 10px 0;
+		margin: 5px 0;
+		border: 2px solid $active;
+		padding: 15px;
+		background: black;
+
+		h2 {
+			padding: 10px 0;
+			color: $playing;
+			font-family: 'Unica One', cursive;
+			
+			a, a:link, a:active, a:visited {
+				color: $playing;
+			}
+			
+			a:hover {
+				color: white;
+			}
+		}
+
+		p {
+			color: $grey3;
+			font-style: italic;
+			font-size: 12px;
+			margin: 2px 0 0 5px;
+		}
+	}
+
+	ol {
+		list-style-type: roman;
+		list-style-position: inside;
+
+		background: $grey2;
+		padding: 15px;
+		border-left: 2px solid $active;
+
+		li {
+			font-family: 'Roboto Mono', monospace;
+			font-size: 12px;
+			margin-left: 10px;
+			color: $grey3;
+			
+			&:first-child {
+				color: $fg;
+				font-size: 16px;
+				margin-left: 0;
+			}
+		}
+	}
+}

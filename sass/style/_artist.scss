@@ -1,0 +1,40 @@
+#artist {
+	.track-lst {
+		tr {
+			th {
+				text-align: center;
+				background: $grey2;
+				border-left: 3px solid $grey1;
+				padding: 2px 0;
+				a {
+					display: inline-block;
+					width: 100%;
+				}
+				
+				&:first-child {
+					border-radius: 50px 0 0 50px;
+					border-left: none;
+				}
+
+				&:last-child {
+					border-radius: 0 50px 50px 0;
+				}
+			}
+			td {
+				// 
+				border-bottom: 1px dashed $grey2;
+				text-align: center;
+
+				&:first-child {
+					color: $active;
+					text-align: right;
+				}
+				
+				&:nth-child(2){
+					text-align: left;
+					padding-left: 5px;
+				}
+			}
+		}
+	}
+}

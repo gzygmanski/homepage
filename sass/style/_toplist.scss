@@ -1,0 +1,65 @@
+#toplist {
+	table {
+		width: 100%;
+		margin-bottom: 10px;
+
+		font-family: 'Unica One', cursive;
+		
+		.top {
+			td {
+				color: $active !important;
+
+				a, a:link, a:active, a:visited {
+					color: $active;
+				}
+
+				.badge {
+					background: $active;
+					color: $bg;
+				}
+
+				a:hover {
+					color: white;
+				}
+			}
+		}
+
+		tr {
+
+			td {
+				padding: 8px 0 4px 0;
+				border-bottom: 1px dashed $grey2;
+
+				&:first-child {
+					text-align: right;
+					padding-right: 10px;
+					color: $active;
+				}
+
+				&:nth-child(2) {
+					color: $green;
+				}
+
+				a {
+					margin: 0;
+				}
+
+			}
+		}
+	}
+
+	a {
+		display: inline-block;
+		margin: 10px 0 20px 0;
+	}
+
+	.full-list {
+		// width: 100%;
+		// text-align: center;
+		margin: 5px 0 15px 15px;
+		
+		svg {
+			padding: 0 10px 0 0;
+		}
+	}
+}

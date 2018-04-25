@@ -1,0 +1,137 @@
+#mpdlist {
+	.top {
+		td {
+			color: $active !important;
+
+			a, a:link, a:active, a:visited {
+				color: $active;
+			}
+
+			.badge {
+				background: $active;
+				color: $bg;
+			}
+
+			a:hover {
+				color: white;
+			}
+
+		}
+	}
+
+	.pagination {
+		display: inline-block;
+		position: fixed;
+		bottom: 0px;
+		left: 0;
+		width: 100%;
+
+		background: $grey2;
+		color: $teal;
+
+		font-family: 'Roboto Mono', monospace;
+		font-size: 14px;
+
+		ul {
+			@media only screen and (min-width:$content) {
+				width: $content;
+			}
+
+			@media only screen and (max-width:$content) {
+				width: 100%;
+				div {
+					li {
+						display: none;
+					}
+				}
+			}
+			// width: $content;
+			margin: auto;
+			display: flex;
+			justify-content: space-between;
+
+			// background: $grey2;
+			// border-top: 1px solid $fg;
+			// border-right: 1px solid $fg;
+			// border-left: 1px solid $fg;
+			border-radius: 5px 5px 0 0;
+			// padding: 5px 20px 0 20px;
+
+			div {
+					display: inline-flex;
+					li {
+						padding: 5px;
+
+						&:first-child, &:last-child {
+							width: initial;
+						}
+					}
+			}
+
+			li {
+
+				padding: 5px 0;
+				a {
+					display: block;
+					width: 100%;
+					svg {
+						padding: 0;
+					}
+				}
+
+				&:first-child, &:last-child {
+					width: 100px;
+					text-align: center;
+				}
+			}
+			.unactive {
+				color: $grey2;
+			}
+		}
+	}
+
+	.track-lst {
+		margin-bottom: 45px;
+		tr {
+			th {
+				text-align: center;
+				background: $grey2;
+				border-left: 3px solid $grey1;
+				padding: 2px 0;
+				a {
+					// display: block;
+					width: 100%;
+				}
+				
+				&:first-child {
+					border-radius: 50px 0 0 50px;
+					border-left: none;
+				}
+
+				&:last-child {
+					border-radius: 0 50px 50px 0;
+				}
+			}
+
+			td {
+				border-bottom: 1px dashed $grey2;
+				
+				&:first-child {
+					width: 20%;
+					color: $grey3;
+				}
+
+				&:nth-child(2) {
+					width: 70%;
+					color: $green;
+				}
+
+				&:last-child {
+					width: 10%;
+					text-align: center;
+				}
+
+			}
+		}
+	}
+}
