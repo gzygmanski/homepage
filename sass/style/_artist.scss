@@ -1,4 +1,10 @@
 #artist {
+	.info {
+		background-color: black;
+	}
+}
+
+#selected-artist-lst {
 	.track-lst {
 		tr {
 			th {
@@ -26,7 +32,7 @@
 				text-align: center;
 
 				&:first-child {
-					color: $active;
+					color: $teal;
 					text-align: right;
 				}
 				

@@ -1,4 +1,7 @@
 #mpdlist {
+
+	margin-bottom: 45px;
+
 	.top {
 		td {
 			color: $active !important;
@@ -91,7 +94,6 @@
 	}
 
 	.track-lst {
-		margin-bottom: 45px;
 		tr {
 			th {
 				text-align: center;

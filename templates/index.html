@@ -7,25 +7,48 @@
 		<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<h1><span class="user">{{ user }}</span>:<span class="tilde">~</span> echo Hello World!</h1>
-		<section id="playing">
-			<div class="current">
-				<h2><!-- <span class="fas fa-music"></span> -->Currently playing</h2>
-				{% if title %}
-				<p>{{ songtitle }}</p>
-				{% else %}
-				<p>Nothing</p>
-				{% endif %}
-			</div>
-			<div class="mpd-stats">
-				<h2>MPD</h2>
-				{% for stat in stats %}
-				<p>{{ stat }}</p>
+		<h1 class=""><span class="user">{{ user }}</span>:<span class="tilde">~</span> echo Hello World!</h1>
+
+		<section id="mpd">
+			<section id="playing">
+				<div class="current">
+					<h2>Currently playing</h2>
+					{% if title %}
+					<p>{{ songtitle }}</p>
+					{% else %}
+					<p>Nothing</p>
+					{% endif %}
+				</div>
+				<div class="mpd-stats">
+					<h2>MPD status</h2>
+					{% for stat in stats %}
+					<p>{{ stat }}</p>
+					{% endfor %}
+				</div>
+			</section>
+
+			<section id="last-played">
+				<table >
+				{% for item in last_played %}
+				
+					<tr>
+						<td>{{ item['id'] }}</td>
+						<td><a href="{{ url_for('getArtist', artist=item['artist'], sort='played', asc=0) }}">{{ item['artist'] }}</a> - <a href="{{ url_for('getTimestamps', id=item['id']) }}">{{ item['title'] }}</a></td>
+						<td>{{ item['timestamp'] }}</td>
+					</tr>
+
 				{% endfor %}
-			</div>
+					<tr>
+						<td></td>
+						<td><a href="{{ url_for('readmpdlist', page=1, sort='timestamp', asc=0) }}">...</a></td>
+						<td></td>
+					</tr>
+				</table>
+			</section>
 		</section>
-		<section id="bookmarks">
-			<h2 class="section-title"><!-- <span class="fas fa-bookmark"></span> -->Bookmarks</h2>
+
+		<section id="bookmarks" class="info">
+			<h2 class="section-title"><span class="fas fa-ellipsis-h"></span>Bookmarks</h2>
 			<div class="flex-container">
 				{% for group in favourites %}
 				<div class="{{ group }} group">
@@ -39,8 +62,9 @@
 				{% endfor %}
 			</div>
 		</section>
-		<section id="toplist">
-			<h2 class="section-title"><!-- <span class="fas fa-trophy"></span> -->Top tracks</h2>
+
+		<section id="toplist" class="info">
+			<h2 class="section-title"><span class="fas fa-ellipsis-h"></span>Top tracks</h2>
 			<table>
 				{% for item in toplist %}
 				{% if item['place'] == 1 or toplist[item['place'] - 1]['played'] == toplist[0]['played']%}
@@ -54,7 +78,7 @@
 				</tr>
 				{%  endfor %}
 			</table>
-			<a class="return full-list" href="{{ url_for('readmpdlist', page=1, sort='timestamp', asc=0) }}"><span class="fas fa-clipboard-list"></span>Show all</a>
+			<a class="return full-list" href="{{ url_for('readmpdlist', page=1, sort='played', asc=0) }}"><!-- <span class="fas fa-clipboard-list"></span> -->Show all</a>
 		</section>	
 	</body>
 </html> 

@@ -1,0 +1,38 @@
+#last-played {
+	padding: 15px;
+	margin-top: 0;
+	background-color: $grey2;
+	font-family: 'Unica One', cursive;
+	table {
+		width: 100%;
+		color: $grey3;
+		tbody {
+			tr {
+				&:first-child {
+					td {
+						font-size: 16px;
+					}
+				}
+				td {
+					font-size: 12px;
+
+					&:first-child {
+						color: $teal;
+						text-align: right;
+						
+						padding-right: 2px;
+					}
+					&:nth-child(2) {
+						color: $green;
+						text-align: left;
+						width: 75%;
+					}
+					&:last-child {
+						text-align: right;
+						width: 20%;
+					}
+				}
+			}
+		}
+	}
+}

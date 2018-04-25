@@ -54,17 +54,17 @@ body {
       width: auto;
       margin: 0 5px 0 5px; } }
 
-section {
-  margin-top: 20px; }
-  section:first-child {
-    margin: 0; }
-  section .section-title {
-    padding: 15px 0;
-    font-size: 18px; }
+section:first-child {
+  margin: 0; }
+section .section-title {
+  padding: 15px 0;
+  font-size: 16px;
+  color: #6fa868;
+  text-transform: uppercase; }
 
 h1 {
   margin: 20px 0;
-  font-size: 26px;
+  font-size: 24px;
   font-family: 'Roboto Mono', monospace; }
   h1 .user {
     color: #68a6a8; }
@@ -94,13 +94,13 @@ a:hover {
 
 .badge {
   display: inline-block;
-  min-width: 40px;
+  min-width: 30px;
+  padding: 4px;
   background: #3b4245;
   color: white;
   font-family: 'Audiowide', cursive;
   text-align: center;
   font-size: 9px;
-  padding: 6px 4px;
   border-radius: 50px; }
 
 .return {
@@ -123,17 +123,18 @@ header, footer {
 
 .info {
   margin: 5px 0;
-  border: 2px solid #ffd573;
-  padding: 15px;
-  background: black; }
+  border: 1px solid #ffd573;
+  padding: 15px; }
   .info h2 {
     padding: 10px 0;
-    color: #cfaccc;
+    color: #68a6a8;
     font-family: 'Unica One', cursive; }
+    .info h2 span {
+      color: #cfaccc; }
   .info p {
     color: #999999;
     font-size: 12px;
-    margin: 2px 0 0 5px; }
+    margin: 2px 0 0 15px; }
 
 .track-lst {
   width: 100%;
@@ -146,9 +147,12 @@ header, footer {
       padding-right: 10px;
       color: #3b4245; }
 
+.term {
+  border: 1px solid #ffd573;
+  background-color: #3b4245;
+  display: block; }
+
 #playing {
-  margin: 5px 0;
-  border: 2px solid #ffd573;
   padding: 15px;
   font-family: 'Unica One', cursive;
   background: black; }
@@ -164,8 +168,10 @@ header, footer {
   #playing .mpd-stats {
     display: block; }
     #playing .mpd-stats h2 {
+      font-family: 'Lato', sans-serif;
       display: inline-block;
       width: 100%;
+      font-size: 14px;
       margin: 2px 0 0 15px;
       color: #6fa868; }
     #playing .mpd-stats p {
@@ -173,6 +179,33 @@ header, footer {
       color: #999999;
       font-size: 12px;
       margin: 2px 0 0 15px; }
+
+#mpd {
+  border: 1px solid #ffd573; }
+
+#last-played {
+  padding: 15px;
+  margin-top: 0;
+  background-color: #3b4245;
+  font-family: 'Unica One', cursive; }
+  #last-played table {
+    width: 100%;
+    color: #999999; }
+    #last-played table tbody tr:first-child td {
+      font-size: 16px; }
+    #last-played table tbody tr td {
+      font-size: 12px; }
+      #last-played table tbody tr td:first-child {
+        color: #68a6a8;
+        text-align: right;
+        padding-right: 2px; }
+      #last-played table tbody tr td:nth-child(2) {
+        color: #6fa868;
+        text-align: left;
+        width: 75%; }
+      #last-played table tbody tr td:last-child {
+        text-align: right;
+        width: 20%; }
 
 #bookmarks .flex-container {
   display: flex;
@@ -187,13 +220,11 @@ header, footer {
   #bookmarks .flex-container .group:last-child {
     margin-right: 0; }
 #bookmarks .group {
-  margin: 5px;
-  padding: 10px;
-  min-width: 150px;
-  background: #3b4245;
-  border-left: 2px solid #ffd573; }
+  padding: 10px 0;
+  min-width: 25%; }
   #bookmarks .group h3 {
-    margin-bottom: 10px; }
+    margin-bottom: 5px;
+    display: none; }
 #bookmarks ul li {
   padding: 4px; }
   #bookmarks ul li svg {
@@ -202,7 +233,6 @@ header, footer {
     text-align: center;
     padding: 0; }
   #bookmarks ul li:hover {
-    background: #2e3436;
     border-radius: 5px; }
     #bookmarks ul li:hover a {
       color: white; }
@@ -226,7 +256,7 @@ header, footer {
     #toplist table .top td a:hover {
       color: white; }
   #toplist table tr td {
-    padding: 8px 0 4px 0;
+    padding: 2px;
     border-bottom: 1px dashed #3b4245; }
     #toplist table tr td:first-child {
       text-align: right;
@@ -244,58 +274,58 @@ header, footer {
   #toplist .full-list svg {
     padding: 0 10px 0 0; }
 
-#mpdlist .top td {
-  color: #ffd573 !important; }
-  #mpdlist .top td a, #mpdlist .top td a:link, #mpdlist .top td a:active, #mpdlist .top td a:visited {
-    color: #ffd573; }
-  #mpdlist .top td .badge {
-    background: #ffd573;
-    color: #2e3436; }
-  #mpdlist .top td a:hover {
-    color: white; }
-#mpdlist .pagination {
-  display: inline-block;
-  position: fixed;
-  bottom: 0px;
-  left: 0;
-  width: 100%;
-  background: #3b4245;
-  color: #68a6a8;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 14px; }
-  #mpdlist .pagination ul {
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 5px 5px 0 0; }
-    @media only screen and (min-width: 736px) {
-      #mpdlist .pagination ul {
-        width: 736px; } }
-    @media only screen and (max-width: 736px) {
-      #mpdlist .pagination ul {
-        width: 100%; }
-        #mpdlist .pagination ul div li {
-          display: none; } }
-    #mpdlist .pagination ul div {
-      display: inline-flex; }
-      #mpdlist .pagination ul div li {
-        padding: 5px; }
-        #mpdlist .pagination ul div li:first-child, #mpdlist .pagination ul div li:last-child {
-          width: initial; }
-    #mpdlist .pagination ul li {
-      padding: 5px 0; }
-      #mpdlist .pagination ul li a {
-        display: block;
-        width: 100%; }
-        #mpdlist .pagination ul li a svg {
-          padding: 0; }
-      #mpdlist .pagination ul li:first-child, #mpdlist .pagination ul li:last-child {
-        width: 100px;
-        text-align: center; }
-    #mpdlist .pagination ul .unactive {
-      color: #3b4245; }
-#mpdlist .track-lst {
+#mpdlist {
   margin-bottom: 45px; }
+  #mpdlist .top td {
+    color: #ffd573 !important; }
+    #mpdlist .top td a, #mpdlist .top td a:link, #mpdlist .top td a:active, #mpdlist .top td a:visited {
+      color: #ffd573; }
+    #mpdlist .top td .badge {
+      background: #ffd573;
+      color: #2e3436; }
+    #mpdlist .top td a:hover {
+      color: white; }
+  #mpdlist .pagination {
+    display: inline-block;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    background: #3b4245;
+    color: #68a6a8;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px; }
+    #mpdlist .pagination ul {
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 5px 5px 0 0; }
+      @media only screen and (min-width: 736px) {
+        #mpdlist .pagination ul {
+          width: 736px; } }
+      @media only screen and (max-width: 736px) {
+        #mpdlist .pagination ul {
+          width: 100%; }
+          #mpdlist .pagination ul div li {
+            display: none; } }
+      #mpdlist .pagination ul div {
+        display: inline-flex; }
+        #mpdlist .pagination ul div li {
+          padding: 5px; }
+          #mpdlist .pagination ul div li:first-child, #mpdlist .pagination ul div li:last-child {
+            width: initial; }
+      #mpdlist .pagination ul li {
+        padding: 5px 0; }
+        #mpdlist .pagination ul li a {
+          display: block;
+          width: 100%; }
+          #mpdlist .pagination ul li a svg {
+            padding: 0; }
+        #mpdlist .pagination ul li:first-child, #mpdlist .pagination ul li:last-child {
+          width: 100px;
+          text-align: center; }
+      #mpdlist .pagination ul .unactive {
+        color: #3b4245; }
   #mpdlist .track-lst tr th {
     text-align: center;
     background: #3b4245;
@@ -321,29 +351,22 @@ header, footer {
       text-align: center; }
 
 #timestamps .info {
-  margin: 5px 0;
-  border: 2px solid #ffd573;
+  margin: 0;
+  border: none;
   padding: 15px;
   background: black; }
   #timestamps .info h2 {
     padding: 10px 0;
-    color: #cfaccc;
     font-family: 'Unica One', cursive; }
     #timestamps .info h2 a, #timestamps .info h2 a:link, #timestamps .info h2 a:active, #timestamps .info h2 a:visited {
       color: #cfaccc; }
     #timestamps .info h2 a:hover {
       color: white; }
-  #timestamps .info p {
-    color: #999999;
-    font-style: italic;
-    font-size: 12px;
-    margin: 2px 0 0 5px; }
 #timestamps ol {
-  list-style-type: roman;
+  list-style-type: none;
   list-style-position: inside;
   background: #3b4245;
-  padding: 15px;
-  border-left: 2px solid #ffd573; }
+  padding: 15px; }
   #timestamps ol li {
     font-family: 'Roboto Mono', monospace;
     font-size: 12px;
@@ -351,29 +374,31 @@ header, footer {
     color: #999999; }
     #timestamps ol li:first-child {
       color: #bfbfbf;
-      font-size: 16px;
-      margin-left: 0; }
+      font-size: 16px; }
 
-#artist .track-lst tr th {
+#artist .info {
+  background-color: black; }
+
+#selected-artist-lst .track-lst tr th {
   text-align: center;
   background: #3b4245;
   border-left: 3px solid #2e3436;
   padding: 2px 0; }
-  #artist .track-lst tr th a {
+  #selected-artist-lst .track-lst tr th a {
     display: inline-block;
     width: 100%; }
-  #artist .track-lst tr th:first-child {
+  #selected-artist-lst .track-lst tr th:first-child {
     border-radius: 50px 0 0 50px;
     border-left: none; }
-  #artist .track-lst tr th:last-child {
+  #selected-artist-lst .track-lst tr th:last-child {
     border-radius: 0 50px 50px 0; }
-#artist .track-lst tr td {
+#selected-artist-lst .track-lst tr td {
   border-bottom: 1px dashed #3b4245;
   text-align: center; }
-  #artist .track-lst tr td:first-child {
-    color: #ffd573;
+  #selected-artist-lst .track-lst tr td:first-child {
+    color: #68a6a8;
     text-align: right; }
-  #artist .track-lst tr td:nth-child(2) {
+  #selected-artist-lst .track-lst tr td:nth-child(2) {
     text-align: left;
     padding-left: 5px; }
 

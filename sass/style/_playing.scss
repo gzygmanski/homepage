@@ -1,6 +1,6 @@
 #playing {
-	margin: 5px 0;
-	border: 2px solid $active;
+	// margin: 5px 0 0 0;
+	// border: 2px solid $active;
 	padding: 15px;
 
 	font-family: 'Unica One', cursive;
@@ -24,8 +24,10 @@
 		display: block;
 		
 		h2 {
+			font-family: 'Lato', sans-serif;
 			display: inline-block;
 			width: 100%;
+			font-size: 14px;
 			margin: 2px 0 0 15px;
 			color: $green;
 		}
@@ -39,4 +41,8 @@
 			
 		}
 	}
+}
+
+#mpd {
+	border: 1px solid $active;
 }

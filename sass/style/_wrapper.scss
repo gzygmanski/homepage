@@ -20,7 +20,7 @@ body {
 }
 
 section {
-	margin-top: 20px;
+	// margin-top: 20px;
 
 	&:first-child {
 		margin: 0;
@@ -28,13 +28,15 @@ section {
 
 	.section-title {
 		padding: 15px 0;
-		font-size: 18px;
+		font-size: 16px;
+		color: $green;
+		text-transform: uppercase;
 	}
 }
 
 h1 {
 	margin: 20px 0;
-	font-size: 26px;
+	font-size: 24px;
 	font-family: 'Roboto Mono', monospace;
 	.user {
 		color: $teal;
@@ -79,14 +81,15 @@ a:hover {
 
 .badge {
 	display: inline-block;
-	min-width: 40px;
+	min-width: 30px;
+	padding: 4px;
 	background: $grey2;
 	color: white;
 
 	font-family: 'Audiowide', cursive;
 	text-align: center;
 	font-size: 9px;
-	padding: 6px 4px;
+	// padding: 4px;
 
 	border-radius: 50px;
 }
@@ -123,21 +126,24 @@ header, footer {
 .info {
 		// margin: 10px 0;
 		margin: 5px 0;
-		border: 2px solid $active;
+		border: 1px solid $active;
 		padding: 15px;
-		background: black;
+		// background: black;
 
 		h2 {
 			padding: 10px 0;
-			color: $playing;
+			color: $teal;
 			font-family: 'Unica One', cursive;
+			span {
+				color: $playing
+			}
 		}
 
 		p {
 			color: $grey3;
 			// font-style: italic;
 			font-size: 12px;
-			margin: 2px 0 0 5px;
+			margin: 2px 0 0 15px;
 		}
 }
 
@@ -161,4 +167,11 @@ header, footer {
 
 			}
 		}
+}
+
+.term {
+	border: 1px solid $active;
+	background-color: $grey2;
+	display: block;
+	// padding: 15px;
 }

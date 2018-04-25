@@ -1,14 +1,14 @@
 #timestamps {
+	// border: 1px solid $active;
 	.info {
 		// margin: 10px 0;
-		margin: 5px 0;
-		border: 2px solid $active;
+		margin: 0;
+		border: none;
 		padding: 15px;
 		background: black;
 
 		h2 {
 			padding: 10px 0;
-			color: $playing;
 			font-family: 'Unica One', cursive;
 			
 			a, a:link, a:active, a:visited {
@@ -19,22 +19,14 @@
 				color: white;
 			}
 		}
-
-		p {
-			color: $grey3;
-			font-style: italic;
-			font-size: 12px;
-			margin: 2px 0 0 5px;
-		}
 	}
 
 	ol {
-		list-style-type: roman;
+		list-style-type: none;
 		list-style-position: inside;
 
 		background: $grey2;
 		padding: 15px;
-		border-left: 2px solid $active;
 
 		li {
 			font-family: 'Roboto Mono', monospace;
@@ -45,7 +37,8 @@
 			&:first-child {
 				color: $fg;
 				font-size: 16px;
-				margin-left: 0;
+				// margin-left: 0;
+				
 			}
 		}
 	}

@@ -17,6 +17,7 @@ def index():
     stats = stats[5:]
     current = commands.getoutput('mpc --host=127.0.0.1 --port=6601 current')
     current_song = unicode(current, "utf-8")
+    last_played = []
     i = 0
     with open('/usr/local/share/mpdlist/mpdlist.json', 'r') as f:
         data = json.load(f)
@@ -28,6 +29,17 @@ def index():
             top10.append(item)
 
             i += 1
+
+        for item in data['songs']:
+            for timestamp in item['timestamp']:
+                last_played.append({
+                    'id': item['id'],
+                    'artist': item['artist'],
+                    'title': item['title'],
+                    'timestamp': timestamp
+                    })
+        y = sorted(last_played, key=lambda d: d['timestamp'], reverse=True)
+        y = y[0:7]
     
     with open('/usr/local/share/favlist/favlist.json', 'r') as f:
         data = json.load(f)
@@ -42,7 +54,8 @@ def index():
         toplist=top10,
         favourites=favourites,
         user=whoami,
-        stats=stats
+        stats=stats,
+        last_played=y
     )
   
 @app.route("/mpdlist/tracks/page:<int:page>/sortby:<string:sort>/asc:<int:asc>")
