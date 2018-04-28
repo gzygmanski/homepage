@@ -1,11 +1,8 @@
 #playing {
-	// margin: 5px 0 0 0;
-	// border: 2px solid $active;
 	padding: 15px;
 
-	font-family: 'Unica One', cursive;
 
-	background: black;
+	font-family: 'Unica One', cursive;
 	h2 {
 		float: left;
 		margin-right: 10px;
@@ -22,7 +19,6 @@
 
 	.mpd-stats {
 		display: block;
-		
 		h2 {
 			font-family: 'Lato', sans-serif;
 			display: inline-block;
@@ -37,6 +33,7 @@
 			color: $grey3;
 			// font-style: italic;
 			font-size: 12px;
+			font-weight: normal;
 			margin: 2px 0 0 15px;
 			
 		}
@@ -45,4 +42,6 @@
 
 #mpd {
 	border: 1px solid $active;
+	font-weight: bold;
+	background-color: black;
 }

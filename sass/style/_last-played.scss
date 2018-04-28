@@ -1,7 +1,7 @@
 #last-played {
-	padding: 15px;
-	margin-top: 0;
-	background-color: $grey2;
+	padding: 30px 15px 15px 15px;
+	// margin-bottom: -8px;
+	background-color: $playing-unactive;
 	font-family: 'Unica One', cursive;
 	table {
 		width: 100%;
@@ -25,11 +25,11 @@
 					&:nth-child(2) {
 						color: $green;
 						text-align: left;
-						width: 75%;
+						width: 73%;
 					}
 					&:last-child {
 						text-align: right;
-						width: 20%;
+						width: 22%;
 					}
 				}
 			}

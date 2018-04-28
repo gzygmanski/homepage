@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ title }}</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<header>
+			<a class="return" href="{{ url_for('index') }}"><span class="fas fa-angle-left"></span>Return</a>
+			<span>/</span>
+			<a class="return" href="{{ url_for('readmpdlist', page=1, sort='played', asc=0) }}">Tracks</a>
+			<span>/</span> 
+			<h1>Artist list</h1>
+		</header>
+
+		<section id="top-artist">
+
+			<div class="info">
+				<h2>Top Artist</h2>
+				<p>Name: <span>{{ artist['name'] }}</span></p>
+				<p>Artist was played: <span>{{ artist['played'] }}
+					{% if artist['played'] == 1 %}
+						time
+					{% else %}
+						times
+					{% endif %}
+				</span></p>
+				<p>Songs tracked: <span>{{ artist['tracks_num'] }}</span></p>
+			</div>
+
+		</section>
+		
+
+		<section id="mpdlist" class="info artists">
+
+			<table class="track-lst">
+				<tr>
+					<th><a class="{% if sort == 'tracks_num' %} active {% endif %}" href="{{ url_for('getArtistList', page=page, sort='tracks_num', asc=rev) }}">tracks</a></th>
+					<th><a class="{% if sort == 'name' %} active {% endif %}" href="{{ url_for('getArtistList', page=page, sort='name', asc=rev) }}">artist</a></th>
+					<th><a class="{% if sort == 'played' %} active {% endif %}" href="{{ url_for('getArtistList', page=page, sort='played', asc=rev) }}">played</a></th>
+				</tr>
+				{% for item in artistlist %}
+				{% if artistlist.index(item) in range(page * items - items, page * items) %}
+				{% if sort == 'played' and not asc and item['played'] == artistlist[0]['played'] %}
+				<tr class="top">
+				{% else %}
+				<tr>
+				{% endif %}
+					<td>{{ item['tracks_num'] }}</td>
+					<td><a href="{{ url_for('getArtist', page=1, artist=item['name'], sort='played', asc=0) }}">{{ item['name'] }}</a></td>
+					
+					<td><span class="badge">{{ item['played'] }}</span></td>
+				</tr>
+				{% endif %}
+				{% endfor %}
+			</table>
+
+			<div class="pagination" style="{% if pages == 1 %}display: none; {% endif %}">
+				<ul class="flex-container">
+					{% if page != 1 %}
+					<li><a href="{{ url_for('getArtistList', page=page - 1, sort=sort, asc=asc) }}"><span class="fas fa-angle-left"></span> Previous</a></li>
+					{% else %}
+					<li class="unactive"><span class="fas fa-angle-left"></span> Previous</li>
+					{% endif %}
+
+					<div>
+						{% if pages < 5 %}
+						<li><a href="{{ url_for('getArtistList', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+						<li>...</li>
+
+						{% for i in range(pages) %}
+						<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('getArtistList', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
+						{% endfor %}
+
+						<li>...</li>
+						<li><a href="{{ url_for('getArtistList', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+						{% elif page in range(1, 3) %}
+						<li><a href="{{ url_for('getArtistList', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+						<li>...</li>
+						{% else %}
+							{% if page not in range(1, 3) and page not in range(pages-1, pages + 1) %}
+							<li><a href="{{ url_for('getArtistList', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+							<li>...</li>
+
+							{% for i in range(page - 3, page + 2) %}
+							<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('getArtistList', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
+							{% endfor %}
+
+							<li>...</li>
+							<li><a href="{{ url_for('getArtistList', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+							{% elif page in range(1, 3) %}
+							<li><a href="{{ url_for('getArtistList', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+							<li>...</li>
+
+							{% for i in range(0, 5) %}
+							<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('getArtistList', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
+							{% endfor %}
+
+							<li>...</li>
+							<li><a href="{{ url_for('getArtistList', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+							{% else %}
+							<li><a href="{{ url_for('getArtistList', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+							<li>...</li>
+
+							{% for i in range(pages-5, pages) %}
+							<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('getArtistList', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
+							{% endfor %}
+
+							<li>...</li>
+							<li><a href="{{ url_for('getArtistList', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+							{% endif %}
+						{% endif %}
+					</div>
+
+					{% if page != pages %}
+					<li><a href="{{ url_for('getArtistList', page=page + 1, sort=sort, asc=asc) }}">Next <span class="fas fa-angle-right"></span></a></li>
+					{% else %}
+					<li class="unactive">Next <span class="fas fa-angle-right"></span></li>
+					{% endif %}
+				</ul>
+			</div>
+			
+		</section>
+	</body>
+</html>

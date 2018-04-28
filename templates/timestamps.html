@@ -10,14 +10,16 @@
 		<header>
 			<a class="return" href="{{ url_for('index') }}"><span class="fas fa-angle-left"></span>Return</a>
 			<span>/</span>
-			<a class="return" href="{{ url_for('readmpdlist', page=1, sort='played', asc=0)}}">Track list</a>
+			<a class="return" href="{{ url_for('readmpdlist', page=1, sort='played', asc=0)}}">Tracks</a>
+			<span>/</span>
+			<a class="return" href="{{ url_for('getArtistList', page=1, sort='played', asc=0) }}">Artists</a>
 			<span>/</span>
 			<h1>Timestamps</h1>
 		</header>
 
 		<section id="timestamps" class="term">
 			<div class="info">
-				<h2>TRACK: <span><a href="{{ url_for('getArtist', artist=song['artist'], sort='played', asc=0) }}">{{ song['artist'] }}</a> - {{ song['title'] }}</span></h2>
+				<h2>TRACK: <span><a href="{{ url_for('getArtist', artist=song['artist'], page=1, sort='played', asc=0) }}">{{ song['artist'] }}</a> - {{ song['title'] }}</span></h2>
 				<p>Song was played: <span>{{ song['played'] }}
 					{% if song['played'] == 1%}
 						time
@@ -27,6 +29,9 @@
 				</span></p>
 				<p>id: <span>{{ song['id'] }}</span></p>
 			</div>
+		</section>
+
+		<section class="info">
 			<div class="timestamp-lst">
 				<!-- <h2 class="section-title"><span class="fas fa-bars"></span>Last played:</h2> -->
 				<ol>
@@ -40,7 +45,9 @@
 		<footer>
 			<a class="return" href="{{ url_for('index') }}"><span class="fas fa-angle-left"></span>Return</a>
 			<span>/</span>
-			<a class="return" href="{{ url_for('readmpdlist', page=1, sort='played', asc=0)}}">Track list</a>
+			<a class="return" href="{{ url_for('readmpdlist', page=1, sort='played', asc=0)}}">Tracks</a>
+			<span>/</span>
+			<a class="return" href="{{ url_for('getArtistList', page=1, sort='played', asc=0) }}">Artists</a>
 		</footer>
 
 	</body>

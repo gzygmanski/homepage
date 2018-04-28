@@ -10,6 +10,7 @@
 		h2 {
 			padding: 10px 0;
 			font-family: 'Unica One', cursive;
+			font-weight: bold;
 			
 			a, a:link, a:active, a:visited {
 				color: $playing;
@@ -20,13 +21,15 @@
 			}
 		}
 	}
+}
 
-	ol {
+.timestamp-lst {
+		ol {
 		list-style-type: none;
 		list-style-position: inside;
 
-		background: $grey2;
-		padding: 15px;
+		background: $grey1;
+		// padding: 15px;
 
 		li {
 			font-family: 'Roboto Mono', monospace;

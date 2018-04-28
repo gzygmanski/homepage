@@ -20,11 +20,24 @@
 					{% endif %}
 				</div>
 				<div class="mpd-stats">
-					<h2>MPD status</h2>
-					{% for stat in stats %}
-					<p>{{ stat }}</p>
-					{% endfor %}
+					<div>
+						<h2>MPD status</h2>
+						{% for stat in stats %}
+						<p>{{ stat }}</p>
+						{% endfor %}
+					</div>
+					<div>
+						<!-- <h2>MPDlist status</h2> -->
+						<p>Played tracks: {{ songsplayed }}</p>
+						<p>Unique tracks: {{ tracks }}</p>
+					</div>
 				</div>
+			</section>
+
+			<section id="graph">
+				<figure>
+				    <embed class="chart" type="image/svg+xml" src="{{ chart }}" />
+			    </figure>
 			</section>
 
 			<section id="last-played">
@@ -33,7 +46,7 @@
 				
 					<tr>
 						<td>{{ item['id'] }}</td>
-						<td><a href="{{ url_for('getArtist', artist=item['artist'], sort='played', asc=0) }}">{{ item['artist'] }}</a> - <a href="{{ url_for('getTimestamps', id=item['id']) }}">{{ item['title'] }}</a></td>
+						<td><a href="{{ url_for('getArtist', artist=item['artist'], page=1, sort='played', asc=0) }}">{{ item['artist'] }}</a> - <a href="{{ url_for('getTimestamps', id=item['id']) }}">{{ item['title'] }}</a></td>
 						<td>{{ item['timestamp'] }}</td>
 					</tr>
 
@@ -45,6 +58,7 @@
 					</tr>
 				</table>
 			</section>
+			
 		</section>
 
 		<section id="bookmarks" class="info">
@@ -73,12 +87,15 @@
 				<tr>
 				{% endif %}
 					<td>{{ item['place'] }}</td>
-					<td><a href="{{ url_for('getArtist', artist=item['artist'], sort='played', asc=0) }}">{{ item['artist'] }}</a> - <a href="{{ url_for('getTimestamps', id=item['id']) }}">{{ item['title'] }}</a></td>
+					<td><a href="{{ url_for('getArtist', artist=item['artist'], page=1, sort='played', asc=0) }}">{{ item['artist'] }}</a> - <a href="{{ url_for('getTimestamps', id=item['id']) }}">{{ item['title'] }}</a></td>
 					<td><span class="badge">{{ item['played'] }}</span></td>
 				</tr>
 				{%  endfor %}
 			</table>
-			<a class="return full-list" href="{{ url_for('readmpdlist', page=1, sort='played', asc=0) }}"><!-- <span class="fas fa-clipboard-list"></span> -->Show all</a>
+			<span>Show all</span>
+			<a class="return" href="{{ url_for('readmpdlist', page=1, sort='played', asc=0) }}"><!-- <span class="fas fa-clipboard-list"></span> -->tracks</a>
+			<span>/</span>
+			<a class="return" href="{{ url_for('getArtistList', page=1, sort='played', asc=0) }}">artists</a>
 		</section>	
 	</body>
 </html> 

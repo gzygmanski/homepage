@@ -10,12 +10,29 @@
 		<header>
 			<a class="return" href="{{ url_for('index') }}"><span class="fas fa-angle-left"></span>Return</a>
 			<span>/</span>
+			<a class="return" href="{{ url_for('getArtistList', page=1, sort='played', asc=0) }}">Artists</a>
+			<span>/</span> 
 			<h1>Track list</h1>
 		</header>
-		
 
-		<section id="mpdlist" class="info">
-			<p>Songs played: <span>{{ songsplayed }}</span></p>
+		<section id="top-track">
+
+			<div class="info">
+				<h2>Top Track</h2>
+				<p>Track: <span>{{ track['id']}} {{ track['artist'] }} - {{ track['title']}}</span></p>
+				<p>Played: <span>{{ track['played'] }}
+					{% if track['played'] == 1 %}
+						time
+					{% else %}
+						times
+					{% endif %}
+				</span></p>
+				<p>Last played: <span>{{ track['timestamp'] }}</span></p>
+			</div>
+
+		</section>
+
+		<section id="mpdlist" class="info tracks">
 
 			<table class="track-lst">
 				<tr>
@@ -35,14 +52,14 @@
 				<tr>
 				{% endif %}
 					<td>{{ item['timestamp'] }}</td>
-					<td><a href="{{ url_for('getArtist', artist=item['artist'], sort='played', asc=0) }}">{{ item['artist'] }}</a> - <a href="{{ url_for('getTimestamps', id=item['id']) }}">{{ item['title'] }}</a></td>
+					<td><a href="{{ url_for('getArtist', artist=item['artist'], page=1, sort='played', asc=0) }}">{{ item['artist'] }}</a> - <a href="{{ url_for('getTimestamps', id=item['id']) }}">{{ item['title'] }}</a></td>
 					<td><span class="badge">{{ item['played'] }}</span></td>
 				</tr>
 				{% endif %}
 				{% endfor %}
 			</table>
-			
-			<div class="pagination">
+
+			<div class="pagination" style="{% if pages == 1 %}display: none; {% endif %}">
 				<ul class="flex-container">
 					{% if page != 1 %}
 					<li><a href="{{ url_for('readmpdlist', page=page - 1, sort=sort, asc=asc) }}"><span class="fas fa-angle-left"></span> Previous</a></li>
@@ -51,36 +68,48 @@
 					{% endif %}
 
 					<div>
-						{% if page not in range(1, 3) and page not in range(pages-1, pages + 1) %}
+						{% if pages < 5 %}
 						<li><a href="{{ url_for('readmpdlist', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
 						<li>...</li>
 
-						{% for i in range(page - 3, page + 2) %}
-						<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('readmpdlist', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
-						{% endfor %}
-
-						<li>...</li>
-						<li><a href="{{ url_for('readmpdlist', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
-						{% elif page in range(1, 3) %}
-						<li><a href="{{ url_for('readmpdlist', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
-						<li>...</li>
-
-						{% for i in range(0, 5) %}
+						{% for i in range(pages) %}
 						<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('readmpdlist', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
 						{% endfor %}
 
 						<li>...</li>
 						<li><a href="{{ url_for('readmpdlist', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
 						{% else %}
-						<li><a href="{{ url_for('readmpdlist', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
-						<li>...</li>
+							{% if page not in range(1, 3) and page not in range(pages-1, pages + 1) %}
+							<li><a href="{{ url_for('readmpdlist', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+							<li>...</li>
 
-						{% for i in range(pages-5, pages) %}
-						<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('readmpdlist', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
-						{% endfor %}
+							{% for i in range(page - 3, page + 2) %}
+							<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('readmpdlist', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
+							{% endfor %}
 
-						<li>...</li>
-						<li><a href="{{ url_for('readmpdlist', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+							<li>...</li>
+							<li><a href="{{ url_for('readmpdlist', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+							{% elif page in range(1, 3) %}
+							<li><a href="{{ url_for('readmpdlist', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+							<li>...</li>
+
+							{% for i in range(0, 5) %}
+							<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('readmpdlist', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
+							{% endfor %}
+
+							<li>...</li>
+							<li><a href="{{ url_for('readmpdlist', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+							{% else %}
+							<li><a href="{{ url_for('readmpdlist', page=1, sort=sort, asc=asc) }}"><span class="fas fa-angle-double-left"></span> {{ 1 }}</a></li>
+							<li>...</li>
+
+							{% for i in range(pages-5, pages) %}
+							<li><a class="{% if page == i + 1 %} active {% endif %}" href="{{ url_for('readmpdlist', page=i + 1, sort=sort, asc=asc) }}">{{ i + 1 }}</a></li>
+							{% endfor %}
+
+							<li>...</li>
+							<li><a href="{{ url_for('readmpdlist', page=pages, sort=sort, asc=asc) }}">{{ pages }} <span class="fas fa-angle-double-right"></span></a></li>
+							{% endif %}
 						{% endif %}
 					</div>
 
@@ -91,6 +120,7 @@
 					{% endif %}
 				</ul>
 			</div>
+
 		</section>
 	</body>
 </html>

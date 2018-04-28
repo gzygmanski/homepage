@@ -22,77 +22,6 @@
 		}
 	}
 
-	.pagination {
-		display: inline-block;
-		position: fixed;
-		bottom: 0px;
-		left: 0;
-		width: 100%;
-
-		background: $grey2;
-		color: $teal;
-
-		font-family: 'Roboto Mono', monospace;
-		font-size: 14px;
-
-		ul {
-			@media only screen and (min-width:$content) {
-				width: $content;
-			}
-
-			@media only screen and (max-width:$content) {
-				width: 100%;
-				div {
-					li {
-						display: none;
-					}
-				}
-			}
-			// width: $content;
-			margin: auto;
-			display: flex;
-			justify-content: space-between;
-
-			// background: $grey2;
-			// border-top: 1px solid $fg;
-			// border-right: 1px solid $fg;
-			// border-left: 1px solid $fg;
-			border-radius: 5px 5px 0 0;
-			// padding: 5px 20px 0 20px;
-
-			div {
-					display: inline-flex;
-					li {
-						padding: 5px;
-
-						&:first-child, &:last-child {
-							width: initial;
-						}
-					}
-			}
-
-			li {
-
-				padding: 5px 0;
-				a {
-					display: block;
-					width: 100%;
-					svg {
-						padding: 0;
-					}
-				}
-
-				&:first-child, &:last-child {
-					width: 100px;
-					text-align: center;
-				}
-			}
-			.unactive {
-				color: $grey2;
-			}
-		}
-	}
-
 	.track-lst {
 		tr {
 			th {
@@ -117,23 +46,73 @@
 
 			td {
 				border-bottom: 1px dashed $grey2;
-				
-				&:first-child {
-					width: 20%;
-					color: $grey3;
-				}
-
-				&:nth-child(2) {
-					width: 70%;
-					color: $green;
-				}
-
-				&:last-child {
-					width: 10%;
-					text-align: center;
-				}
-
 			}
 		}
 	}
+
+
 }
+
+	.tracks {
+		table {
+			tbody {
+				tr {
+					td {
+						&:first-child {
+							width: 20%;
+							color: $grey3;
+						}
+
+						&:nth-child(2) {
+							width: 70%;
+							color: $green;
+						}
+
+						&:last-child {
+							width: 10%;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.artists {
+		table {
+			tbody {
+				tr {
+					td {
+						&:first-child {
+							width: 10%;
+							color: $grey3;
+						}
+
+						&:nth-child(2) {
+							width: 80%;
+							color: $green;
+						}
+
+						&:last-child {
+							width: 10%;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#top-artist, #top-track, #artist, #timestamps {
+		background-color: black;
+		h2 {
+			font-weight: bold;
+		}
+
+		p {
+			color: $green;
+			span {
+				color: $grey3;
+			}
+		}
+	}

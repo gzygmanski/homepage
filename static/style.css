@@ -44,28 +44,34 @@ body {
   margin: auto;
   background: #2e3436;
   color: #bfbfbf;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Ubuntu Mono', sans-serif;
   font-size: 16px; }
-  @media only screen and (min-width: 736px) {
+  @media only screen and (min-width: 836px) {
     body {
-      width: 736px; } }
-  @media only screen and (max-width: 736px) {
+      width: 836px; } }
+  @media only screen and (max-width: 836px) {
     body {
       width: auto;
       margin: 0 5px 0 5px; } }
+
+#graph {
+  position: relative;
+  bottom: -3px; }
 
 section:first-child {
   margin: 0; }
 section .section-title {
   padding: 15px 0;
   font-size: 16px;
+  font-weight: bold;
   color: #6fa868;
   text-transform: uppercase; }
 
 h1 {
   margin: 20px 0;
   font-size: 24px;
-  font-family: 'Roboto Mono', monospace; }
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: bold; }
   h1 .user {
     color: #68a6a8; }
   h1 .tilde {
@@ -152,10 +158,51 @@ header, footer {
   background-color: #3b4245;
   display: block; }
 
+.pagination {
+  display: inline-block;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  background: #3b4245;
+  color: #68a6a8;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px; }
+  .pagination ul {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px 5px 0 0; }
+    @media only screen and (min-width: 836px) {
+      .pagination ul {
+        width: 836px; } }
+    @media only screen and (max-width: 836px) {
+      .pagination ul {
+        width: 100%; }
+        .pagination ul div li {
+          display: none; } }
+    .pagination ul div {
+      display: inline-flex; }
+      .pagination ul div li {
+        padding: 5px; }
+        .pagination ul div li:first-child, .pagination ul div li:last-child {
+          width: initial; }
+    .pagination ul li {
+      padding: 5px 0; }
+      .pagination ul li a {
+        display: block;
+        width: 100%; }
+        .pagination ul li a svg {
+          padding: 0; }
+      .pagination ul li:first-child, .pagination ul li:last-child {
+        width: 100px;
+        text-align: center; }
+    .pagination ul .unactive {
+      color: #3b4245; }
+
 #playing {
   padding: 15px;
-  font-family: 'Unica One', cursive;
-  background: black; }
+  font-family: 'Unica One', cursive; }
   #playing h2 {
     float: left;
     margin-right: 10px; }
@@ -178,15 +225,17 @@ header, footer {
       font-family: 'Lato', sans-serif;
       color: #999999;
       font-size: 12px;
+      font-weight: normal;
       margin: 2px 0 0 15px; }
 
 #mpd {
-  border: 1px solid #ffd573; }
+  border: 1px solid #ffd573;
+  font-weight: bold;
+  background-color: black; }
 
 #last-played {
-  padding: 15px;
-  margin-top: 0;
-  background-color: #3b4245;
+  padding: 30px 15px 15px 15px;
+  background-color: #292229;
   font-family: 'Unica One', cursive; }
   #last-played table {
     width: 100%;
@@ -202,15 +251,15 @@ header, footer {
       #last-played table tbody tr td:nth-child(2) {
         color: #6fa868;
         text-align: left;
-        width: 75%; }
+        width: 73%; }
       #last-played table tbody tr td:last-child {
         text-align: right;
-        width: 20%; }
+        width: 22%; }
 
 #bookmarks .flex-container {
   display: flex;
   justify-content: space-between; }
-  @media only screen and (max-width: 736px) {
+  @media only screen and (max-width: 836px) {
     #bookmarks .flex-container {
       display: block; }
       #bookmarks .flex-container .group {
@@ -268,7 +317,7 @@ header, footer {
       margin: 0; }
 #toplist a {
   display: inline-block;
-  margin: 10px 0 20px 0; }
+  margin: 10px 0 0 0; }
 #toplist .full-list {
   margin: 5px 0 15px 15px; }
   #toplist .full-list svg {
@@ -285,47 +334,6 @@ header, footer {
       color: #2e3436; }
     #mpdlist .top td a:hover {
       color: white; }
-  #mpdlist .pagination {
-    display: inline-block;
-    position: fixed;
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    background: #3b4245;
-    color: #68a6a8;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 14px; }
-    #mpdlist .pagination ul {
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      border-radius: 5px 5px 0 0; }
-      @media only screen and (min-width: 736px) {
-        #mpdlist .pagination ul {
-          width: 736px; } }
-      @media only screen and (max-width: 736px) {
-        #mpdlist .pagination ul {
-          width: 100%; }
-          #mpdlist .pagination ul div li {
-            display: none; } }
-      #mpdlist .pagination ul div {
-        display: inline-flex; }
-        #mpdlist .pagination ul div li {
-          padding: 5px; }
-          #mpdlist .pagination ul div li:first-child, #mpdlist .pagination ul div li:last-child {
-            width: initial; }
-      #mpdlist .pagination ul li {
-        padding: 5px 0; }
-        #mpdlist .pagination ul li a {
-          display: block;
-          width: 100%; }
-          #mpdlist .pagination ul li a svg {
-            padding: 0; }
-        #mpdlist .pagination ul li:first-child, #mpdlist .pagination ul li:last-child {
-          width: 100px;
-          text-align: center; }
-      #mpdlist .pagination ul .unactive {
-        color: #3b4245; }
   #mpdlist .track-lst tr th {
     text-align: center;
     background: #3b4245;
@@ -340,15 +348,35 @@ header, footer {
       border-radius: 0 50px 50px 0; }
   #mpdlist .track-lst tr td {
     border-bottom: 1px dashed #3b4245; }
-    #mpdlist .track-lst tr td:first-child {
-      width: 20%;
+
+.tracks table tbody tr td:first-child {
+  width: 20%;
+  color: #999999; }
+.tracks table tbody tr td:nth-child(2) {
+  width: 70%;
+  color: #6fa868; }
+.tracks table tbody tr td:last-child {
+  width: 10%;
+  text-align: center; }
+
+.artists table tbody tr td:first-child {
+  width: 10%;
+  color: #999999; }
+.artists table tbody tr td:nth-child(2) {
+  width: 80%;
+  color: #6fa868; }
+.artists table tbody tr td:last-child {
+  width: 10%;
+  text-align: center; }
+
+#top-artist, #top-track, #artist, #timestamps {
+  background-color: black; }
+  #top-artist h2, #top-track h2, #artist h2, #timestamps h2 {
+    font-weight: bold; }
+  #top-artist p, #top-track p, #artist p, #timestamps p {
+    color: #6fa868; }
+    #top-artist p span, #top-track p span, #artist p span, #timestamps p span {
       color: #999999; }
-    #mpdlist .track-lst tr td:nth-child(2) {
-      width: 70%;
-      color: #6fa868; }
-    #mpdlist .track-lst tr td:last-child {
-      width: 10%;
-      text-align: center; }
 
 #timestamps .info {
   margin: 0;
@@ -357,27 +385,30 @@ header, footer {
   background: black; }
   #timestamps .info h2 {
     padding: 10px 0;
-    font-family: 'Unica One', cursive; }
+    font-family: 'Unica One', cursive;
+    font-weight: bold; }
     #timestamps .info h2 a, #timestamps .info h2 a:link, #timestamps .info h2 a:active, #timestamps .info h2 a:visited {
       color: #cfaccc; }
     #timestamps .info h2 a:hover {
       color: white; }
-#timestamps ol {
+
+.timestamp-lst ol {
   list-style-type: none;
   list-style-position: inside;
-  background: #3b4245;
-  padding: 15px; }
-  #timestamps ol li {
+  background: #2e3436; }
+  .timestamp-lst ol li {
     font-family: 'Roboto Mono', monospace;
     font-size: 12px;
     margin-left: 10px;
     color: #999999; }
-    #timestamps ol li:first-child {
+    .timestamp-lst ol li:first-child {
       color: #bfbfbf;
       font-size: 16px; }
 
 #artist .info {
   background-color: black; }
+  #artist .info h2 {
+    font-weight: bold; }
 
 #selected-artist-lst .track-lst tr th {
   text-align: center;

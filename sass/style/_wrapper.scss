@@ -1,4 +1,3 @@
-
 body {
 	@media only screen and (min-width:$content) {
 		width: $content;
@@ -15,8 +14,16 @@ body {
 	background: $bg;
 	color: $fg;
 
-	font-family: 'Lato', sans-serif;
-	font-size: 16px
+	font-family: 'Ubuntu Mono', sans-serif;
+	font-size: 16px;
+	// font-weight: bold;
+}
+
+#graph {
+	// background-color: $playing-unactive;
+	position: relative;
+	bottom: -3px;
+	// z-index: 2;
 }
 
 section {
@@ -29,6 +36,7 @@ section {
 	.section-title {
 		padding: 15px 0;
 		font-size: 16px;
+		font-weight: bold;
 		color: $green;
 		text-transform: uppercase;
 	}
@@ -37,7 +45,8 @@ section {
 h1 {
 	margin: 20px 0;
 	font-size: 24px;
-	font-family: 'Roboto Mono', monospace;
+	font-family: 'Ubuntu Mono', monospace;
+	font-weight: bold;
 	.user {
 		color: $teal;
 	}
@@ -174,4 +183,75 @@ header, footer {
 	background-color: $grey2;
 	display: block;
 	// padding: 15px;
+}
+
+.pagination {
+	display: inline-block;
+	position: fixed;
+	bottom: 0px;
+	left: 0;
+	width: 100%;
+
+	background: $grey2;
+	color: $teal;
+
+	font-family: 'Roboto Mono', monospace;
+	font-size: 14px;
+
+	ul {
+		@media only screen and (min-width:$content) {
+			width: $content;
+		}
+
+		@media only screen and (max-width:$content) {
+			width: 100%;
+			div {
+				li {
+					display: none;
+				}
+			}
+		}
+		// width: $content;
+		margin: auto;
+		display: flex;
+		justify-content: space-between;
+
+		// background: $grey2;
+		// border-top: 1px solid $fg;
+		// border-right: 1px solid $fg;
+		// border-left: 1px solid $fg;
+		border-radius: 5px 5px 0 0;
+		// padding: 5px 20px 0 20px;
+
+		div {
+				display: inline-flex;
+				li {
+					padding: 5px;
+
+					&:first-child, &:last-child {
+						width: initial;
+					}
+				}
+		}
+
+		li {
+
+			padding: 5px 0;
+			a {
+				display: block;
+				width: 100%;
+				svg {
+					padding: 0;
+				}
+			}
+
+			&:first-child, &:last-child {
+				width: 100px;
+				text-align: center;
+			}
+		}
+		.unactive {
+			color: $grey2;
+		}
+	}
 }
